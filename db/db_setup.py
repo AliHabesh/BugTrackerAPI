@@ -1,8 +1,13 @@
+import os
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-URL_DATABASE = 'postgresql://postgres:root@localhost:5432/BugTracker'
+db_username = os.environ['db_username']
+db_password = os.environ['db_password']
+
+URL_DATABASE = f'postgresql://{db_username}:{db_password}@localhost:5432/BugTracker'
 
 engine = create_engine(URL_DATABASE)
 
